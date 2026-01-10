@@ -4,8 +4,11 @@
 #include <zephyr/logging/log.h>
 
 #include "configs.hpp"
+#include "OneChassisData.hpp"
 
+extern Topic<OneChassisData>& topic_one_chassis;
 LOG_MODULE_REGISTER(main, CONFIG_LOG_DEFAULT_LEVEL);
+
 
 using namespace OF;
 
@@ -17,7 +20,9 @@ int main()
     start_all_nodes();
     while (true)
     {
-        k_sleep(K_MSEC(1000));
+        const auto data = topic_one_chassis.read();
+        LOG_INF("%s", data.format().c_str());
+        k_sleep(K_MSEC(300));
     }
 }
 
