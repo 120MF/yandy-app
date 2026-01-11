@@ -25,5 +25,9 @@ manifest:
     path: modules/lib/one-chassis
     url: https://github.com/RoboMaster-DLMU-CONE/one-chassis
     revision: main
+  - name: yandy-arm
+    path: modules/lib/nodes/yandy-arm
+    url: https://github.com/120MF/yandy-arm
+    revision: main
   self:
     path: one-starter
