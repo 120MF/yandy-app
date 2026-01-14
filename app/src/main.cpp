@@ -20,11 +20,8 @@ int main()
     start_all_nodes();
     while (true)
     {
-        const auto data = topic_one_chassis.read();
-        LOG_INF("%s", data.format().c_str());
-        auto [quat, euler_angle, gyro, accel] = getImuData();
-        auto& [p, r, y] = euler_angle;
-        LOG_INF("euler: %f, %f, %f;", p, r, y);
+        // const auto data = topic_one_chassis.read();
+        // LOG_INF("%s", data.format().c_str());
         k_sleep(K_MSEC(300));
     }
 }
