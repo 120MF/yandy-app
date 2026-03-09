@@ -29,5 +29,9 @@ manifest:
     path: modules/lib/nodes/yandy-arm
     url: https://github.com/120MF/yandy-arm
     revision: main
+  - name: yandy-gimbal
+    path: modules/lib/nodes/yandy-gimbal
+    url: https://github.com/120MF/yandy-gimbal
+    revision: main
   self:
     path: one-starter
