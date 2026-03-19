@@ -5,3 +5,14 @@
     };
 };
 
+&timers1 {
+    status = "okay";
+    st,prescaler = <167>;
+
+    pwm1: pwm {
+        status = "okay";
+        pinctrl-0 = <&tim1_ch1_pe9 &tim1_ch2_pe11>;
+        pinctrl-names = "default";
+    };
+};
+
