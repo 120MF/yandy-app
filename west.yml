@@ -33,5 +33,9 @@ manifest:
     path: modules/lib/nodes/yandy-gimbal
     url: https://github.com/120MF/yandy-gimbal
     revision: main
+  - name: yandy-communicate
+    path: modules/lib/nodes/yandy-communicate
+    url: https://github.com/120MF/yandy-communicate
+    revision: main
   self:
     path: one-starter
