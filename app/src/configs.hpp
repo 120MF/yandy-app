@@ -1,7 +1,7 @@
 #pragma once
-#include "OneChassisNode.hpp"
+#include <OneChassisNode.hpp>
 #include <YandyGimbalNode.hpp>
-#include <YandyCommunicateNode.hpp>
+// #include <YandyCommunicateNode.hpp>
 #include <zephyr/drivers/pwm.h>
 
 // Servo PWM specs - TIM1 CH1 and CH2, 20ms period (50Hz)
@@ -24,16 +24,16 @@ static constexpr pwm_dt_spec servo2_spec = {
 // 在这里配置 Nodes
 void config_nodes()
 {
-    OneChassisNode::bind<OneChassisNode::Config>({DEVICE_DT_GET(DT_NODELABEL(can1))});
-    
+    OneChassisNode::bind<OneChassisNode::Config>({DEVICE_DT_GET(DT_NODELABEL(can2))});
+
     YandyGimbalNode::bind<YandyGimbalNode::Config>({
         DEVICE_DT_GET(DT_NODELABEL(can1)),
         &servo1_spec,
         &servo2_spec
     });
-    
-    YandyCommunicateNode::bind<YandyCommunicateNode::Config>({
-        DEVICE_DT_GET(DT_NODELABEL(cdc_acm_uart0))
-    });
+
+    // YandyCommunicateNode::bind<YandyCommunicateNode::Config>({
+    //     DEVICE_DT_GET(DT_NODELABEL(cdc_acm_uart0))
+    // });
 }
 

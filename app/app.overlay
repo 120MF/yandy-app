@@ -1,18 +1,30 @@
 / {
-    vthub {
-        compatible = "one-framework,vt-hub";
-        input-device = <&usart3>;
-    };
+	vthub {
+		compatible = "one-framework,vt-hub";
+		input-device = <&usart6>;
+	};
+
+	imu_hub: imu_hub {
+		compatible = "one-framework,imu-hub";
+		accel-device = <&bmi088_accel>;
+		gyro-device = <&bmi088_gyro>;
+	};
+
+	notify_hub {
+		compatible = "one-framework,notify-hub";
+		led-pixel-device = <&pixel_led>;
+		pwm-buzzer-device = <&pwm_buzzer>;
+	};
 };
 
 &timers1 {
-    status = "okay";
-    st,prescaler = <167>;
+	status = "okay";
+	st,prescaler = <167>;
 
-    pwm1: pwm {
-        status = "okay";
-        pinctrl-0 = <&tim1_ch1_pe9 &tim1_ch2_pe11>;
-        pinctrl-names = "default";
-    };
+	pwm1: pwm {
+		status = "okay";
+		pinctrl-0 = <&tim1_ch1_pe9 &tim1_ch2_pe11>;
+		pinctrl-names = "default";
+	};
 };
 

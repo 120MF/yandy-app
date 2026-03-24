@@ -3,11 +3,13 @@
 #include <zephyr/logging/log.h>
 
 #include "configs.hpp"
-#include "OneChassisData.hpp"
+#include "RPL/Packets/VT03RemotePacket.hpp"
+// #include "OneChassisData.hpp"
 
-extern Topic<OneChassisData>& topic_one_chassis;
+// extern Topic<OneChassisData>& topic_one_chassis;
 LOG_MODULE_REGISTER(main, CONFIG_LOG_DEFAULT_LEVEL);
 
+#include <OF/lib/VtHub/VtHub.hpp>
 
 using namespace OF;
 
@@ -20,6 +22,21 @@ int main()
     {
         // const auto data = topic_one_chassis.read();
         // LOG_INF("%s", data.format().c_str());
+
+
+        const auto res = VtHub::get<VT03RemotePacket>();
+        if (!res)
+        {
+            LOG_WRN("disconnected with vt...");
+        }
+        else
+        {
+            auto rc = res.value<>();
+            LOG_INF("VT03: LX=%.2f LY=%.2f RX=%u RY=%u W=%u SW=%u",
+                    vt_stick_percent(rc.left_stick_x), vt_stick_percent(rc.left_stick_y),
+                    (unsigned)rc.right_stick_x, (unsigned)rc.right_stick_y,
+                    (unsigned)rc.wheel, (unsigned)rc.switch_state);
+        }
         k_sleep(K_MSEC(300));
     }
 }
