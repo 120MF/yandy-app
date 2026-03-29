@@ -29,14 +29,6 @@ int main()
         {
             LOG_WRN("disconnected with vt...");
         }
-        else
-        {
-            auto rc = res.value<>();
-            LOG_INF("VT03: LX=%.2f LY=%.2f RX=%u RY=%u W=%u SW=%u",
-                    vt_stick_percent(rc.left_stick_x), vt_stick_percent(rc.left_stick_y),
-                    (unsigned)rc.right_stick_x, (unsigned)rc.right_stick_y,
-                    (unsigned)rc.wheel, (unsigned)rc.switch_state);
-        }
         k_sleep(K_MSEC(300));
     }
 }
